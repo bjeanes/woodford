@@ -5,7 +5,7 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.1.0' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -22,8 +22,10 @@ Rails::Initializer.run do |config|
 
   # Specify gems that this application depends on. 
   # They can then be installed with "rake gems:install" on new installations.
+  # You have to specify the :lib option for libraries, where the Gem name (sqlite3-ruby) differs from the file itself (sqlite3)
   # config.gem "bj"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
+  # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
 
   # Only load the plugins named here, in the order given. By default, all plugins 
@@ -40,16 +42,21 @@ Rails::Initializer.run do |config|
 
   # Make Time.zone default to the specified zone, and make Active Record store time values
   # in the database in UTC, and return them converted to the specified local zone.
-  # Run "rake -D time" for a list of tasks for finding time zone names. Uncomment to use default local time.
+  # Run "rake -D time" for a list of tasks for finding time zone names. Comment line to use default local time.
   config.time_zone = 'UTC'
+
+  # The internationalization framework can be changed to have another default locale (standard is :en) or more load paths.
+  # All files from config/locales/*.rb,yml are added automatically.
+  # config.i18n.load_path << Dir[File.join(RAILS_ROOT, 'my', 'locales', '*.{rb,yml}')]
+  # config.i18n.default_locale = :de
 
   # Your secret key for verifying cookie session data integrity.
   # If you change this key, all old sessions will become invalid!
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
-    :session_key => '_wffnetcafe_session',
-    :secret      => '5fa10fc243494ccbdae4ff5553399f5297e3e27503ac77225765c3fe59e1aca1465ae70466b0c784a14d8506dcd3397b0a9c35f7674744554d544c5c1250e9ad'
+    :session_key => '_woodford_session',
+    :secret      => 'dede9e45b8d7956a2019861e661979e3e32dd35eecbfb4d358cb3751d54413f613478f27a41e0fc34c3d7519706ecd00ab01aa2d1a88d9d569b7b5228805f2f7'
   }
 
   # Use the database for sessions instead of the cookie-based default,
@@ -63,5 +70,6 @@ Rails::Initializer.run do |config|
   # config.active_record.schema_format = :sql
 
   # Activate observers that should always be running
-  # config.active_record.observers = :cacher, :garbage_collector
+  # Please note that observers generated using script/generate observer need to have an _observer suffix
+  # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 end
