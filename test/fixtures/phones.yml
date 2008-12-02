@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  owner: MyString
+  description: MyString
+  time_in: 2008-12-02 23:46:59
+  time_out: 2008-12-02 23:46:59
+
+two:
+  owner: MyString
+  description: MyString
+  time_in: 2008-12-02 23:46:59
+  time_out: 2008-12-02 23:46:59
