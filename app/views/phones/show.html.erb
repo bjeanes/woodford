@@ -1,0 +1,28 @@
+<p>
+  <b>Owner:</b>
+  <%=h @phone.owner %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @phone.description %>
+</p>
+
+<p>
+  <b>Time in:</b>
+  <%=h @phone.time_in %>
+</p>
+
+<p>
+  <b>Time out:</b>
+  <%=h @phone.time_out %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%=h @phone.state %>
+</p>
+
+
+<%= link_to 'Edit', edit_phone_path(@phone) %> |
+<%= link_to 'Back', phones_path %>

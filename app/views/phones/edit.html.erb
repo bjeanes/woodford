@@ -1,0 +1,32 @@
+<h1>Editing phone</h1>
+
+<% form_for(@phone) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :owner %><br />
+    <%= f.text_field :owner %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :time_in %><br />
+    <%= f.datetime_select :time_in %>
+  </p>
+  <p>
+    <%= f.label :time_out %><br />
+    <%= f.datetime_select :time_out %>
+  </p>
+  <p>
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @phone %> |
+<%= link_to 'Back', phones_path %>

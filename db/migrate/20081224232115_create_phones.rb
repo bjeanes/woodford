@@ -5,6 +5,7 @@ class CreatePhones < ActiveRecord::Migration
       t.string :description
       t.datetime :time_in
       t.datetime :time_out
+      t.string :state
 
       t.timestamps
     end

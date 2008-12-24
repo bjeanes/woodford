@@ -1,0 +1,28 @@
+<h1>Listing phones</h1>
+
+<table>
+  <tr>
+    <th>Owner</th>
+    <th>Description</th>
+    <th>Time in</th>
+    <th>Time out</th>
+    <th>State</th>
+  </tr>
+
+<% for phone in @phones %>
+  <tr>
+    <td><%=h phone.owner %></td>
+    <td><%=h phone.description %></td>
+    <td><%=h phone.time_in %></td>
+    <td><%=h phone.time_out %></td>
+    <td><%=h phone.state %></td>
+    <td><%= link_to 'Show', phone %></td>
+    <td><%= link_to 'Edit', edit_phone_path(phone) %></td>
+    <td><%= link_to 'Destroy', phone, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New phone', new_phone_path %>
