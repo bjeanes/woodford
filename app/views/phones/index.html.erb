@@ -1,7 +1,7 @@
 <h1>Listing phones</h1>
 
-<table>
-  <tr>
+<table class="phone-listings">
+  <tr class="phone-headings">
     <th>Owner</th>
     <th>Description</th>
     <th>Time in</th>
@@ -10,7 +10,7 @@
   </tr>
 
 <% for phone in @phones %>
-  <tr>
+  <tr class="phone-listing">
     <td><%=h phone.owner %></td>
     <td><%=h phone.description %></td>
     <td><%=h phone.time_in %></td>

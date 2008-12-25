@@ -1,0 +1,48 @@
+body
+{
+	background: url('../images/bg.png') repeat-x top right #acddf1; 	
+	padding: 0;
+	margin: 0;
+}
+
+#header
+{
+	height: 50px;
+	text-align: right;
+	background: url('../images/heading.png') no-repeat bottom right; 	
+}
+
+#content
+{
+	padding-left:30px;
+	font-family: "Century Gothic";
+	font-size: 10pt;
+}
+
+
+.phone-listings
+{
+	background-color: #41809c;
+	text-align: left;
+}
+
+.phone-headings
+{
+	color: #fff;
+}
+
+.phone-headings th
+{
+	padding: 5px 0 5px 0;
+}
+
+.phone-listing
+{
+	background-color: #b8ffac;
+	
+}
+
+.phone-listing td
+{
+	padding: 2px;
+}
