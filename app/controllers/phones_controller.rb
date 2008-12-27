@@ -2,7 +2,8 @@ class PhonesController < ApplicationController
   # GET /phones
   # GET /phones.xml
   def index
-    @phones = Phone.find(:all)
+    @phone = Phone.new
+    get_phones
 
     respond_to do |format|
       format.html # index.html.erb
@@ -21,17 +22,6 @@ class PhonesController < ApplicationController
     end
   end
 
-  # GET /phones/new
-  # GET /phones/new.xml
-  def new
-    @phone = Phone.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @phone }
-    end
-  end
-
   # GET /phones/1/edit
   def edit
     @phone = Phone.find(params[:id])
@@ -41,14 +31,16 @@ class PhonesController < ApplicationController
   # POST /phones.xml
   def create
     @phone = Phone.new(params[:phone])
+    @phone.charging! if params[:charging]
 
     respond_to do |format|
       if @phone.save
-        flash[:notice] = 'Phone was successfully created.'
-        format.html { redirect_to(@phone) }
+        flash[:notice] = 'Phone was successfully added.'
+        format.html { redirect_to(:action => :index) }
         format.xml  { render :xml => @phone, :status => :created, :location => @phone }
       else
-        format.html { render :action => "new" }
+        get_phones
+        format.html { render :action => "index" }
         format.xml  { render :xml => @phone.errors, :status => :unprocessable_entity }
       end
     end
@@ -81,5 +73,10 @@ class PhonesController < ApplicationController
       format.html { redirect_to(phones_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  protected
+  def get_phones
+    @phones = Phone.find(:all)    
   end
 end

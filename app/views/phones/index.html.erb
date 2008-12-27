@@ -1,28 +1,46 @@
-<h1>Listing phones</h1>
+<h1>Phones</h1>
+
+<h2>Add phone</h2>
+
+
+<% form_for(:phone) do |f| %>
+  <%= f.error_messages %>
+
+  <table>
+    <tr>
+      <th><%= f.label :owner %></th>
+      <th><%= f.label :description %></th>
+      <th><%= label_tag :charging? %></th>
+      <th></th>
+    </tr>
+    <tr>
+      <td><%= f.text_field :owner %></td>
+      <td><%= f.text_field :description %></td>
+      <td><%= check_box_tag :charging %></td>
+      <td><%= f.submit "Add" %></td>
+    </tr>
+  </table>
+<% end %>
+
 
 <table class="phone-listings">
   <tr class="phone-headings">
+    <th>Number</th>
     <th>Owner</th>
     <th>Description</th>
-    <th>Time in</th>
-    <th>Time out</th>
-    <th>State</th>
+    <th>Dropped off at</th>
+    <th>Picked up at</th>
   </tr>
 
 <% for phone in @phones %>
   <tr class="phone-listing">
+    <td><%= phone.id %></td>
     <td><%=h phone.owner %></td>
     <td><%=h phone.description %></td>
-    <td><%=h phone.time_in %></td>
-    <td><%=h phone.time_out %></td>
-    <td><%=h phone.state %></td>
-    <td><%= link_to 'Show', phone %></td>
-    <td><%= link_to 'Edit', edit_phone_path(phone) %></td>
-    <td><%= link_to 'Destroy', phone, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%=h phone.dropped_off_at %></td>
+    <td><%=h phone.picked_up_at %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New phone', new_phone_path %>

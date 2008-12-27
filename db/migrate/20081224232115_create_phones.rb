@@ -3,11 +3,10 @@ class CreatePhones < ActiveRecord::Migration
     create_table :phones do |t|
       t.string :owner
       t.string :description
-      t.datetime :time_in
-      t.datetime :time_out
-      t.string :state
-
-      t.timestamps
+      t.datetime :dropped_off_at
+      t.datetime :charging_at
+      t.datetime :charged_at
+      t.datetime :picked_up_at
     end
   end
 
