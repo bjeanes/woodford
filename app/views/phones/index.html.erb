@@ -11,12 +11,14 @@
       <th><%= f.label :owner %></th>
       <th><%= f.label :description %></th>
       <th><%= label_tag :charging? %></th>
+      <th><%= f.label :location %></th>
       <th></th>
     </tr>
     <tr>
       <td><%= f.text_field :owner %></td>
       <td><%= f.text_field :description %></td>
-      <td><%= check_box_tag :charging %></td>
+      <td><%= check_box_tag :charging, nil, params[:charging] %></td>
+      <td><%= f.text_field :location, :size => 5 %></td>
       <td><%= f.submit "Add" %></td>
     </tr>
   </table>
@@ -26,18 +28,24 @@
 <table class="phone-listings">
   <tr class="phone-headings">
     <th>Number</th>
-    <th>Owner</th>
+    <th>Location</th>
+    <th>Name</th>
     <th>Description</th>
     <th>Dropped off at</th>
+    <th>Put on at</th>
+    <th>Taken off at</th>
     <th>Picked up at</th>
   </tr>
 
 <% for phone in @phones %>
   <tr class="phone-listing">
-    <td><%= phone.id %></td>
+    <td><%= phone.ticket_number %></td>
+    <td><%=h phone.location %></td>
     <td><%=h phone.owner %></td>
     <td><%=h phone.description %></td>
     <td><%=h phone.dropped_off_at %></td>
+    <td><%=h phone.charging_at %></td>
+    <td><%=h phone.charged_at %></td>
     <td><%=h phone.picked_up_at %></td>
   </tr>
 <% end %>
