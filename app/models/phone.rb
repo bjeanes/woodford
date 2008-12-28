@@ -15,7 +15,7 @@ class Phone < ActiveRecord::Base
   
   
   def charging!
-    unless charging_at?
+    unless charging?
       self.dropped_off_at = Time.now unless self.dropped_off_at?
       self.charging_at = Time.now
     end
@@ -26,7 +26,11 @@ class Phone < ActiveRecord::Base
   end
   
   def charging?
-    charging_at?
+    !charging_at.nil?
+  end
+  
+  def charging=(param)
+    self.charging! if param
   end
   
   protected

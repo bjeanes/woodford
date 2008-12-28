@@ -2,6 +2,8 @@
 module ApplicationHelper
   
   def charging_time_or_link(phone)
-    phone.charging? ? h(phone.charging_at) : link_to("Put on charge", phone_path(phone), :method => :put)
+    phone.charging? ? 
+      h(phone.charging_at) : 
+      link_to("Put on charge", charge_phone_path(phone), :method => :put)
   end
 end

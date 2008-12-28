@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :phones, :except => [:new, :show, :destroy, :edit]
+  map.resources :phones, :except => [:new, :show, :destroy, :edit], :member => {:charge => :put}
 
   # The priority is based upon order of creation: first created -> highest priority.
 

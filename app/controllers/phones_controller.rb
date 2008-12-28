@@ -30,21 +30,14 @@ class PhonesController < ApplicationController
     end
   end
 
-  # PUT /phones/1
-  # PUT /phones/1.xml
-  def update
+  def charge
     @phone = Phone.find(params[:id])
-
-    respond_to do |format|
-      if @phone.update_attributes(params[:phone])
-        flash[:notice] = "Phone ##{@phone.ticket_number} was successfully updated."
-        format.html { redirect_to(@phone) }
-        format.xml  { head :ok }
-      else
-        get_phones
-        format.html { render :action => "index" }
-        format.xml  { render :xml => @phone.errors, :status => :unprocessable_entity }
-      end
+    @phone.charging!
+    if @phone.save
+      redirect_to :action => :index
+    else
+      get_phones
+      render :action => :index
     end
   end
 
