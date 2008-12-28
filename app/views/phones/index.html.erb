@@ -44,7 +44,7 @@
     <td><%=h phone.owner %></td>
     <td><%=h phone.description %></td>
     <td><%=h phone.dropped_off_at %></td>
-    <td><%=h phone.charging_at %></td>
+    <td><%= charging_time_or_link(phone) %></td>
     <td><%=h phone.charged_at %></td>
     <td><%=h phone.picked_up_at %></td>
   </tr>

@@ -16,6 +16,7 @@ class Phone < ActiveRecord::Base
   
   def charging!
     unless charging_at?
+      self.dropped_off_at = Time.now unless self.dropped_off_at?
       self.charging_at = Time.now
     end
   end
