@@ -1,5 +1,9 @@
 <h1>Phones</h1>
 
+<pre>
+  <%= h(params.inspect) %>
+</pre>
+
 <h2>Add phone</h2>
 
 
@@ -44,9 +48,9 @@
     <td><%=h phone.owner %></td>
     <td><%=h phone.description %></td>
     <td><%=h phone.dropped_off_at %></td>
-    <td><%= charging_time_or_link(phone) %></td>
-    <td><%=h phone.charged_at %></td>
-    <td><%=h phone.picked_up_at %></td>
+    <td><%= charging_time_or_form(phone) %></td>
+    <td><%= charged_time_or_link(phone) %></td>
+    <td><%= picked_up_time_or_link(phone) %></td>
   </tr>
 <% end %>
 </table>

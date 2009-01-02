@@ -15,7 +15,7 @@ class PhonesController < ApplicationController
   # POST /phones.xml
   def create
     @phone = Phone.new(params[:phone])
-    @phone.charging! if params[:charging]
+    @phone.charge! if params[:charging]
 
     respond_to do |format|
       if @phone.save
@@ -30,9 +30,23 @@ class PhonesController < ApplicationController
     end
   end
 
+  %w{charge take_off pick_up}.each do |action|
+    define_method action do
+      @phone = Phone.find(params[:id])
+      @phone.update_attributes!(params[:phone])
+      @phone.send("#{action}!")
+      if @phone.save
+        redirect_to :action => :index
+      else
+        get_phones
+        render :action => :index
+      end
+    end
+  end
+
   def charge
     @phone = Phone.find(params[:id])
-    @phone.charging!
+    @phone.charge!
     if @phone.save
       redirect_to :action => :index
     else
